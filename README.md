@@ -1,8 +1,13 @@
 # Student Admission and Profile Management Portal
 
-**Course:** U21CS501 Web Technology, Assignment II (KPR Institute of Engineering and Technology, CSE, 2026-27)
-**Student:** `Aakash Yadav` &nbsp;|&nbsp; **Roll number:** `24CS281` &nbsp;|&nbsp; **Section:** CSE-B
-**GitHub repository:** `<PASTE YOUR REPOSITORY URL HERE>` (see "Publishing to GitHub" in SETUP_GUIDE.md)
+| | |
+|---|---|
+| **Course** | U21CS501 Web Technology, Assignment II |
+| **Institution** | KPR Institute of Engineering and Technology, CSE, 2026-27 |
+| **Student** | Aakash Yadav |
+| **Roll number** | 24CS281 |
+| **Section** | CSE-B |
+| **GitHub repository** | https://github.com/<your-username>/student-admission-portal |
 
 A college admission system in three cooperating parts that share **one MySQL database** and **one upload folder**:
 
