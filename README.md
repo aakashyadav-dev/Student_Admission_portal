@@ -1,7 +1,7 @@
 # Student Admission and Profile Management Portal
 
 **Course:** U21CS501 Web Technology, Assignment II (KPR Institute of Engineering and Technology, CSE, 2026-27)
-**Student:** `<YOUR NAME>` &nbsp;|&nbsp; **Roll number:** `<YOUR ROLL NUMBER>` &nbsp;|&nbsp; **Section:** V / A
+**Student:** `Aakash Yadav` &nbsp;|&nbsp; **Roll number:** `24CS281` &nbsp;|&nbsp; **Section:** CSE-B
 **GitHub repository:** `<PASTE YOUR REPOSITORY URL HERE>` (see "Publishing to GitHub" in SETUP_GUIDE.md)
 
 A college admission system in three cooperating parts that share **one MySQL database** and **one upload folder**:
