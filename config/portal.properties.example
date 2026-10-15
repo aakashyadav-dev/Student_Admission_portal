@@ -1,0 +1,24 @@
+# Shared configuration for the PHP admin panel AND the Java servlet portal.
+# Copy this file to  config/portal.properties  and edit the values.
+# (portal.properties is git-ignored so your credentials are never committed.)
+#
+# Format: KEY=VALUE, one per line. Lines starting with # are comments.
+
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_NAME=student_portal
+DB_USER=portal_app
+DB_PASS=change_me_to_your_own_password
+
+# Folder where uploaded files are stored. Both PHP and Java read/write here.
+# Relative paths are resolved against the folder that contains this file.
+UPLOAD_DIR=../storage/uploads
+
+# Largest single upload accepted by the application, in megabytes.
+MAX_UPLOAD_MB=5
+
+# PHP only: browser origins allowed to call the public registration API.
+ALLOWED_ORIGINS=http://localhost:8000,http://127.0.0.1:8000
+
+# PHP only: URL path prefix if the admin panel is not served from the site root.
+APP_BASE_PATH=

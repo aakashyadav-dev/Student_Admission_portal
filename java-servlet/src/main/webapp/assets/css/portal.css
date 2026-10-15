@@ -1,0 +1,166 @@
+/* ==========================================================================
+   Student Admission and Profile Management Portal -- shared base styles
+   The same file is used by the registration page, the PHP admin panel and the
+   Java portal so all three parts look like one product.
+   ========================================================================== */
+:root {
+  --ink: #16283d;          /* headings and body text */
+  --muted: #5a6b7d;        /* secondary text */
+  --line: #d8dee4;         /* borders */
+  --surface: #f3f5f7;      /* page background */
+  --card: #ffffff;
+  --brand: #1f4c63;        /* primary actions, nav */
+  --brand-dark: #153646;
+  --brand-tint: #e4eef3;
+  --accent: #c8892b;       /* crest amber, used sparingly */
+  --ok: #17703f;   --ok-bg: #e5f4ec;
+  --warn: #8a5300; --warn-bg: #fdf1dc;
+  --err: #b3261e;  --err-bg: #fbe9e7;
+  --radius: 10px;
+  --shadow: 0 1px 2px rgba(22, 40, 61, .08), 0 4px 14px rgba(22, 40, 61, .05);
+  --font-body: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-head: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; font: 16px/1.55 var(--font-body); color: var(--ink); background: var(--surface); }
+img { max-width: 100%; display: block; }
+a { color: var(--brand); }
+a:hover { color: var(--brand-dark); }
+h1, h2, h3 { font-family: var(--font-head); line-height: 1.2; margin: 0 0 .5em; font-weight: 700; }
+h1 { font-size: 1.9rem; } h2 { font-size: 1.35rem; } h3 { font-size: 1.1rem; }
+p { margin: 0 0 1em; }
+:focus-visible { outline: 3px solid #f0b34a; outline-offset: 2px; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.container { width: min(1120px, 100% - 2rem); margin-inline: auto; }
+.muted { color: var(--muted); }
+.skip-link { position: absolute; left: -999px; top: 0; background: #fff; padding: .5rem 1rem; z-index: 50; }
+.skip-link:focus { left: 0; }
+
+/* ---- Top bar ---- */
+.topbar { background: var(--brand); color: #fff; border-bottom: 4px solid var(--accent); }
+.topbar .container { display: flex; align-items: center; gap: 1.25rem; min-height: 60px; flex-wrap: wrap; padding-block: .4rem; }
+.brand { font-family: var(--font-head); font-weight: 700; font-size: 1.1rem; color: #fff; text-decoration: none; margin-right: auto; display: flex; align-items: center; gap: .6rem; }
+.brand-mark { width: 30px; height: 30px; flex: none; }
+.topbar nav { display: flex; gap: .25rem; flex-wrap: wrap; align-items: center; }
+.topbar nav a, .topbar nav button { color: #e8f1f5; text-decoration: none; padding: .45rem .8rem; border-radius: 6px; font-size: .95rem; background: none; border: 0; cursor: pointer; font-family: inherit; }
+.topbar nav a:hover, .topbar nav button:hover, .topbar nav a[aria-current="page"] { background: rgba(255, 255, 255, .14); color: #fff; }
+.topbar .who { font-size: .85rem; color: #c3d6df; margin-right: .5rem; }
+.topbar form { margin: 0; }
+
+/* ---- Page layout ---- */
+.page { padding-block: 2rem 3rem; }
+.page-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.25rem; }
+.page-head p { margin: 0; color: var(--muted); }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.5rem; }
+.card + .card { margin-top: 1.25rem; }
+.card > h2:first-child, .card > h3:first-child { margin-top: 0; }
+.grid-2 { display: grid; gap: 1.25rem; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.footer { color: var(--muted); font-size: .85rem; text-align: center; padding: 1.5rem 1rem 2rem; border-top: 1px solid var(--line); }
+
+/* ---- Buttons ---- */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: .4rem; padding: .62rem 1.15rem; border-radius: 8px; border: 1px solid transparent; font: 600 .95rem var(--font-body); cursor: pointer; text-decoration: none; background: var(--brand); color: #fff; min-height: 42px; }
+.btn:hover { background: var(--brand-dark); color: #fff; }
+.btn-ghost { background: #fff; color: var(--brand); border-color: var(--line); }
+.btn-ghost:hover { background: var(--brand-tint); color: var(--brand-dark); }
+.btn-danger { background: var(--err); } .btn-danger:hover { background: #8d1c16; }
+.btn-sm { padding: .3rem .7rem; min-height: 34px; font-size: .85rem; }
+.btn[disabled], .btn[aria-disabled="true"] { opacity: .6; cursor: not-allowed; }
+.btn-row { display: flex; gap: .6rem; flex-wrap: wrap; align-items: center; }
+
+/* ---- Forms ---- */
+.field { margin-bottom: 1.1rem; }
+.field label, .field .label { display: block; font-weight: 600; font-size: .92rem; margin-bottom: .3rem; }
+.req { color: var(--err); margin-left: .15rem; }
+.field input[type="text"], .field input[type="email"], .field input[type="password"], .field input[type="search"], .field input[type="date"], .field input[type="tel"], .field select, .field textarea {
+  width: 100%; padding: .65rem .8rem; border: 1px solid #aeb9c4; border-radius: 8px; font: inherit; color: var(--ink); background: #fff; min-height: 44px; }
+.field textarea { min-height: 90px; resize: vertical; }
+.field input:focus, .field select:focus, .field textarea:focus { border-color: var(--brand); outline: 3px solid rgba(31, 76, 99, .25); outline-offset: 0; }
+.field input[aria-invalid="true"], .field select[aria-invalid="true"], .field textarea[aria-invalid="true"] { border-color: var(--err); background: #fffafa; }
+.field input.is-valid, .field select.is-valid { border-color: var(--ok); }
+.hint { font-size: .83rem; color: var(--muted); margin-top: .3rem; }
+.error-msg { font-size: .85rem; color: var(--err); margin-top: .3rem; font-weight: 500; }
+.error-msg:empty { display: none; }
+.form-grid { display: grid; gap: 0 1.25rem; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.form-grid .full { grid-column: 1 / -1; }
+.file-input { width: 100%; padding: .5rem; border: 1px dashed #aeb9c4; border-radius: 8px; background: #fafbfc; font: inherit; }
+fieldset { border: 0; padding: 0; margin: 0 0 1rem; min-width: 0; }
+legend { font-family: var(--font-head); font-size: 1.15rem; font-weight: 700; padding: 0; margin-bottom: .8rem; }
+
+/* ---- Alerts and badges ---- */
+.alert { border-radius: 8px; padding: .8rem 1rem; margin-bottom: 1rem; border: 1px solid; font-size: .95rem; }
+.alert-ok { background: var(--ok-bg); color: var(--ok); border-color: #b4dcc5; }
+.alert-err { background: var(--err-bg); color: var(--err); border-color: #f1c1bc; }
+.alert-warn { background: var(--warn-bg); color: var(--warn); border-color: #f0d6a6; }
+.alert ul { margin: .35rem 0 0; padding-left: 1.2rem; }
+.badge { display: inline-block; padding: .12rem .6rem; border-radius: 99px; font-size: .78rem; font-weight: 600; background: var(--brand-tint); color: var(--brand-dark); }
+.badge-active { background: var(--ok-bg); color: var(--ok); }
+.badge-pending { background: var(--warn-bg); color: var(--warn); }
+.badge-inactive { background: #e9ecef; color: #4d5864; }
+
+/* ---- Stats, tables ---- */
+.stats { display: grid; gap: 1rem; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-bottom: 1.25rem; }
+.stat { background: var(--card); border: 1px solid var(--line); border-left: 4px solid var(--brand); border-radius: var(--radius); padding: 1rem 1.2rem; }
+.stat strong { display: block; font: 700 1.9rem var(--font-head); }
+.stat span { color: var(--muted); font-size: .88rem; }
+.table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius); background: #fff; }
+table { width: 100%; border-collapse: collapse; font-size: .93rem; }
+th, td { text-align: left; padding: .7rem .9rem; border-bottom: 1px solid var(--line); vertical-align: middle; }
+th { background: #eef2f5; font-size: .82rem; color: var(--muted); font-weight: 700; white-space: nowrap; }
+tr:last-child td { border-bottom: 0; }
+tbody tr:hover { background: #f8fafb; }
+td.actions { white-space: nowrap; }
+td.actions form { display: inline; }
+.thumb { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; background: var(--brand-tint); }
+.bar-row { display: grid; grid-template-columns: 90px 1fr 32px; gap: .6rem; align-items: center; margin-bottom: .55rem; font-size: .9rem; }
+.bar { height: 10px; background: #e6ebef; border-radius: 99px; overflow: hidden; }
+.bar > i { display: block; height: 100%; background: var(--brand); }
+
+/* ---- Search / filter bar, pagination ---- */
+.toolbar { display: flex; gap: .6rem; flex-wrap: wrap; margin-bottom: 1rem; }
+.toolbar input[type="search"], .toolbar select { padding: .55rem .8rem; border: 1px solid #aeb9c4; border-radius: 8px; font: inherit; min-height: 42px; background: #fff; }
+.toolbar input[type="search"] { flex: 1 1 240px; }
+.pagination { display: flex; gap: .4rem; flex-wrap: wrap; margin-top: 1rem; align-items: center; }
+.pagination a, .pagination span { padding: .35rem .75rem; border: 1px solid var(--line); border-radius: 6px; text-decoration: none; background: #fff; font-size: .9rem; }
+.pagination .current { background: var(--brand); color: #fff; border-color: var(--brand); }
+
+/* ---- Student profile ---- */
+.avatar { width: 150px; height: 150px; border-radius: 14px; object-fit: cover; background: var(--brand-tint); border: 1px solid var(--line); }
+.avatar-fallback { width: 150px; height: 150px; border-radius: 14px; background: var(--brand-tint); color: var(--brand); display: grid; place-items: center; font: 700 3rem var(--font-head); border: 1px solid var(--line); }
+.profile-head { display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap; }
+.dl { display: grid; grid-template-columns: 150px 1fr; gap: .55rem 1rem; margin: 0; }
+.dl dt { color: var(--muted); font-size: .9rem; } .dl dd { margin: 0; word-break: break-word; }
+.file-list { list-style: none; margin: 0; padding: 0; }
+.file-list li { display: flex; gap: 1rem; align-items: center; padding: .75rem 0; border-bottom: 1px solid var(--line); flex-wrap: wrap; }
+.file-list li:last-child { border-bottom: 0; }
+.file-list .meta { flex: 1 1 220px; min-width: 0; word-break: break-word; }
+.file-list .meta small { display: block; color: var(--muted); }
+.file-list img { width: 64px; height: 64px; object-fit: cover; border-radius: 8px; border: 1px solid var(--line); }
+.file-icon { width: 64px; height: 64px; border-radius: 8px; background: var(--brand-tint); color: var(--brand); display: grid; place-items: center; font-weight: 700; font-size: .8rem; flex: none; }
+
+/* ---- Student cards (Java portal) ---- */
+.student-grid { display: grid; gap: 1.1rem; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+.student-card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.1rem; display: flex; gap: 1rem; align-items: flex-start; }
+.student-card .photo { width: 72px; height: 72px; border-radius: 12px; object-fit: cover; background: var(--brand-tint); flex: none; }
+.student-card .photo-fallback { width: 72px; height: 72px; border-radius: 12px; background: var(--brand-tint); color: var(--brand); display: grid; place-items: center; font: 700 1.5rem var(--font-head); flex: none; }
+.student-card h3 { margin: 0 0 .15rem; font-size: 1.05rem; }
+.student-card p { margin: 0 0 .3rem; font-size: .88rem; color: var(--muted); }
+
+/* ---- Empty state, auth pages ---- */
+.empty { text-align: center; padding: 3rem 1rem; color: var(--muted); border: 1px dashed #aeb9c4; border-radius: var(--radius); background: #fff; }
+.empty h3 { color: var(--ink); }
+.auth-wrap { min-height: 100vh; display: grid; place-items: center; padding: 1.5rem; background: linear-gradient(160deg, var(--brand) 0 38%, var(--surface) 38%); }
+.auth-card { width: min(420px, 100%); }
+.auth-card .brand { color: var(--ink); margin: 0 0 1rem; }
+
+@media (max-width: 900px) { .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } .grid-2 { grid-template-columns: 1fr; } }
+@media (max-width: 640px) {
+  .form-grid { grid-template-columns: 1fr; }
+  .dl { grid-template-columns: 1fr; gap: .1rem; } .dl dd { margin-bottom: .6rem; }
+  .topbar .container { justify-content: center; } .brand { margin-right: 0; }
+  .card { padding: 1.1rem; }
+}
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+
+/* ---- small utility used by the JSP/PHP profile pages (no inline styles, so a strict CSP works) ---- */
+.rule { border: 0; border-top: 1px solid var(--line); margin: 1.25rem 0; }

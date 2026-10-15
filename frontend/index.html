@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Student Registration | Student Admission and Profile Management Portal</title>
+  <meta name="description" content="Register for admission: personal details, course, documents and password.">
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/register.css">
+</head>
+<body>
+  <a class="skip-link" href="#registration-form">Skip to the registration form</a>
+
+  <header class="topbar">
+    <div class="container">
+      <a class="brand" href="index.html"><img class="brand-mark" src="assets/logo.svg" alt=""> Student Admission Portal</a>
+      <nav aria-label="Main">
+        <a href="index.html" aria-current="page">Register</a>
+        <a href="http://localhost:8080/login.php">Admin panel</a>
+        <a href="http://localhost:8081/student-portal/login">Student profiles</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page container">
+    <div class="register-layout">
+      <aside class="intro" aria-labelledby="intro-title">
+        <h1 id="intro-title">Register for admission</h1>
+        <p>Fill in the form once. The admissions office reviews your registration and activates your profile.</p>
+        <h2>Keep these ready</h2>
+        <ul>
+          <li>Your roll number, for example 24CSE101</li>
+          <li>A clear profile photo (JPG, PNG or WebP, up to 2 MB)</li>
+          <li>Optional: an ID proof as PDF, JPG or PNG, up to 5 MB</li>
+          <li>A password with 8 or more characters, mixing letters, numbers and a symbol</li>
+        </ul>
+        <h2>Already registered?</h2>
+        <p>Staff can <a href="http://localhost:8080/login.php">sign in to the admin panel</a> to review registrations.</p>
+      </aside>
+
+      <section class="card" aria-labelledby="form-title">
+        <h2 id="form-title">Student registration form</h2>
+        <p class="muted">Fields marked <span class="req" aria-hidden="true">*</span><span class="sr-only">with an asterisk</span> are required.</p>
+
+        <div class="demo-banner" hidden role="note">Demo mode is on: the form is validated in your browser and nothing is saved.</div>
+        <div id="form-status" class="alert" role="alert" tabindex="-1" hidden></div>
+
+        <form id="registration-form" novalidate>
+          <fieldset>
+            <legend>Student details</legend>
+            <div class="form-grid">
+              <div class="field full">
+                <label for="full_name">Full name <span class="req" aria-hidden="true">*</span></label>
+                <input type="text" id="full_name" name="full_name" autocomplete="name" maxlength="100" required aria-required="true" aria-describedby="full_name_error" aria-invalid="false">
+                <div class="error-msg" id="full_name_error"></div>
+              </div>
+              <div class="field">
+                <label for="roll_number">Roll number <span class="req" aria-hidden="true">*</span></label>
+                <input type="text" id="roll_number" name="roll_number" maxlength="20" autocapitalize="characters" required aria-required="true" aria-describedby="roll_hint roll_number_error" aria-invalid="false">
+                <div class="hint" id="roll_hint">Example: 24CSE101</div>
+                <div class="error-msg" id="roll_number_error"></div>
+              </div>
+              <div class="field">
+                <label for="email">Email address <span class="req" aria-hidden="true">*</span></label>
+                <input type="email" id="email" name="email" autocomplete="email" maxlength="150" required aria-required="true" aria-describedby="email_error" aria-invalid="false">
+                <div class="error-msg" id="email_error"></div>
+              </div>
+              <div class="field full">
+                <label for="course">Course <span class="req" aria-hidden="true">*</span></label>
+                <select id="course" name="course" required aria-required="true" aria-describedby="course_error" aria-invalid="false">
+                  <option value="">Select your course</option>
+                  <!-- values are course codes; they must match the "code" column of the courses table -->
+                  <option value="CSE">B.E. Computer Science and Engineering</option>
+                  <option value="ECE">B.E. Electronics and Communication Engineering</option>
+                  <option value="MECH">B.E. Mechanical Engineering</option>
+                  <option value="AIDS">B.Tech. Artificial Intelligence and Data Science</option>
+                  <option value="IT">B.Tech. Information Technology</option>
+                  <option value="EEE">B.E. Electrical and Electronics Engineering</option>
+                </select>
+                <div class="error-msg" id="course_error"></div>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Documents</legend>
+            <div class="form-grid">
+              <div class="field">
+                <label for="profile_image">Profile photo <span class="req" aria-hidden="true">*</span></label>
+                <input class="file-input" type="file" id="profile_image" name="profile_image" accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp" required aria-required="true" aria-describedby="photo_hint profile_image_error" aria-invalid="false">
+                <div class="hint" id="photo_hint">JPG, PNG or WebP, up to 2 MB.</div>
+                <div class="error-msg" id="profile_image_error"></div>
+                <div id="profile_preview" aria-live="polite"></div>
+              </div>
+              <div class="field">
+                <label for="id_proof">ID proof or supporting document</label>
+                <input class="file-input" type="file" id="id_proof" name="id_proof" accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png" aria-describedby="proof_hint id_proof_error" aria-invalid="false">
+                <div class="hint" id="proof_hint">Optional. PDF, JPG or PNG, up to 5 MB.</div>
+                <div class="error-msg" id="id_proof_error"></div>
+                <div id="proof_preview" aria-live="polite"></div>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Create a password</legend>
+            <div class="form-grid">
+              <div class="field">
+                <label for="password">Password <span class="req" aria-hidden="true">*</span></label>
+                <input type="password" id="password" name="password" autocomplete="new-password" maxlength="128" required aria-required="true" aria-describedby="pw_checks password_error" aria-invalid="false">
+                <div class="meter" aria-hidden="true"><div id="strength-bar"></div></div>
+                <div class="meter-label" id="strength-label" aria-live="polite"></div>
+                <div class="error-msg" id="password_error"></div>
+              </div>
+              <div class="field">
+                <label for="confirm_password">Confirm password <span class="req" aria-hidden="true">*</span></label>
+                <input type="password" id="confirm_password" name="confirm_password" autocomplete="new-password" maxlength="128" required aria-required="true" aria-describedby="confirm_password_error" aria-invalid="false">
+                <div class="error-msg" id="confirm_password_error"></div>
+                <button type="button" class="link-btn" id="toggle-password" aria-pressed="false">Show passwords</button>
+              </div>
+              <ul class="pw-checks full" id="pw_checks" aria-label="Password requirements">
+                <li data-check="length">At least 8 characters</li>
+                <li data-check="lower">A lowercase letter</li>
+                <li data-check="upper">An uppercase letter</li>
+                <li data-check="digit">A number</li>
+                <li data-check="special">A symbol such as ! @ # $</li>
+              </ul>
+            </div>
+          </fieldset>
+
+          <!-- Honeypot: real people never see or fill this. Bots often do, and the server rejects those. -->
+          <div class="honeypot" aria-hidden="true"><label>Leave this empty <input type="text" id="website" name="website" tabindex="-1" autocomplete="off"></label></div>
+
+          <div class="btn-row">
+            <button type="submit" class="btn" id="submit-btn">Submit registration</button>
+            <button type="reset" class="btn btn-ghost">Clear form</button>
+          </div>
+        </form>
+
+        <div id="success-panel" class="success" tabindex="-1" hidden role="status">
+          <div class="tick" aria-hidden="true">&#10003;</div>
+          <h2>Registration received</h2>
+          <p id="success-message"></p>
+          <p>Your roll number: <code id="success-roll"></code></p>
+          <p class="demo-note muted" hidden>Demo mode was on, so no record was created.</p>
+          <button type="button" class="btn btn-ghost" id="register-another">Register another student</button>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">Student Admission and Profile Management Portal &middot; U21CS501 Web Technology, Assignment 2</footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/validation.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

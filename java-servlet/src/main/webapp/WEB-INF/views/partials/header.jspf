@@ -1,0 +1,30 @@
+<%-- Shared page header. Included with <%@ include file="..." %>, so the including page must declare the "c" taglib
+     and may set the variable "pageTitle" first. Shows the navigation only for signed-in users. --%>
+<c:set var="ctx" value="${pageContext.request.contextPath}"/>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><c:out value="${empty pageTitle ? 'Student profiles' : pageTitle}"/> | Student Admission Portal</title>
+  <link rel="icon" href="${ctx}/assets/img/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="${ctx}/assets/css/portal.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="topbar">
+  <div class="container">
+    <a class="brand" href="${ctx}/portal/students"><img class="brand-mark" src="${ctx}/assets/img/logo.svg" alt=""> Student Admission Portal &middot; Profiles</a>
+    <c:if test="${not empty currentUser}">
+      <nav aria-label="Main">
+        <a href="${ctx}/portal/students" aria-current="page">Students</a>
+        <span class="who"><c:out value="${currentUser.fullName}"/> (<c:out value="${currentUser.role}"/>)</span>
+        <form method="post" action="${ctx}/logout">
+          <input type="hidden" name="csrf_token" value="<c:out value='${csrfToken}'/>">
+          <button type="submit">Sign out</button>
+        </form>
+      </nav>
+    </c:if>
+  </div>
+</header>
+<main id="main" class="page container">

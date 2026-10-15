@@ -1,0 +1,20 @@
+# Local configuration with real credentials: never commit this
+config/portal.properties
+
+# Uploaded files created while you use the app (the demo files in storage/sample_uploads ARE committed)
+storage/uploads/*
+!storage/uploads/.gitkeep
+
+# Build output and tool caches
+java-servlet/target/
+node_modules/
+*.war
+*.class
+__pycache__/
+.phpunit.result.cache
+
+# Editor / OS files
+.DS_Store
+.idea/
+.vscode/
+*.log
