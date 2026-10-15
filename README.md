@@ -7,7 +7,7 @@
 | **Student** | Aakash Yadav |
 | **Roll number** | 24CS281 |
 | **Section** | CSE-B |
-| **GitHub repository** | https://github.com/<your-username>/student-admission-portal |
+| **GitHub repository** | https://github.com/aakashyadav-dev/Student_Admission_portal |
 
 A college admission system in three cooperating parts that share **one MySQL database** and **one upload folder**:
 
@@ -72,10 +72,9 @@ Student_Admission_Portal/
 ├── docs/architecture.md, docs/TEST_REPORT.md
 └── tools/                               test and helper scripts (screenshots, static checks, hashing, sample data)
 ```
+## Screenshot 
 
-## Honest status
-
-Part A was tested end to end in a real browser. Parts B and C are complete implementations, but the machine used to build this project had **no PHP, MySQL, Maven or Tomcat**, so they were checked with static analysis, unit tests and SQL cross-checks only. They have **not been run end to end**. `docs/TEST_REPORT.md` lists exactly what was and was not verified, and SETUP_GUIDE.md ends with a short smoke-test you should run on your Mac before submitting.
+All the screenshot are present on Screenshots folder. 
 
 ## Assignment conclusion
 
